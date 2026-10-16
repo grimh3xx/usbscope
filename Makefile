@@ -7,7 +7,7 @@
 #   make clean
 
 CXX        ?= g++
-CXXFLAGS   ?= -std=c++17 -O2 -Wall -Wextra -municode
+CXXFLAGS   ?= -std=c++17 -O2 -Wall -Wextra
 SRC_COMMON := src/textutil.cpp src/banner.cpp src/usbdesc.cpp src/usbids.cpp src/device.cpp src/app.cpp
 WIN_SRC    := src/main.cpp src/term_win.cpp src/usbenum_win.cpp $(SRC_COMMON)
 WIN_LIBS   := -lsetupapi -lcfgmgr32 -static -static-libgcc -static-libstdc++

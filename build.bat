@@ -20,7 +20,7 @@ exit /b 0
 
 :mingw
 echo [MinGW] compilando...
-g++ -std=c++17 -O2 -municode -Wall %SRC% -o usbscope.exe -lsetupapi -lcfgmgr32 -static -static-libgcc -static-libstdc++
+g++ -std=c++17 -O2 -Wall %SRC% -o usbscope.exe -lsetupapi -lcfgmgr32 -static -static-libgcc -static-libstdc++
 if errorlevel 1 ( echo. & echo FALHOU - veja os erros acima & exit /b 1 )
 echo.
 echo ok -^> usbscope.exe
