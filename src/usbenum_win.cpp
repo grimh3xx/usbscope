@@ -11,6 +11,8 @@
 #define INITGUID
 #include <windows.h>
 // depois de windows.h:
+#include <winioctl.h>   // CTL_CODE, METHOD_BUFFERED, FILE_* — WIN32_LEAN_AND_MEAN não os traz,
+                        // e o usbioctl.h precisa deles pra montar os IOCTLs (ordem importa)
 #include <initguid.h>
 #include <cfgmgr32.h>
 #include <devpkey.h>
