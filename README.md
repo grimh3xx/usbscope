@@ -1,6 +1,6 @@
 <div align="center">
 
-# usbscope
+<img src="docs/banner.svg" alt="usbscope" width="100%">
 
 **Inspetor de dispositivos USB interativo para o terminal do Windows**
 feito com WinUSB / IOCTLs de hub · C++17 · sem dependências externas
@@ -8,6 +8,9 @@ feito com WinUSB / IOCTLs de hub · C++17 · sem dependências externas
 `CentralTech Solutions` · [centraltechpc.com](https://centraltechpc.com) · [github.com/grimh3xx](https://github.com/grimh3xx)
 
 </div>
+
+<p align="center"><img src="docs/demo.svg" alt="usbscope demo" width="100%"></p>
+
 
 ---
 
