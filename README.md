@@ -5,6 +5,12 @@
 **Inspetor de dispositivos USB interativo para o terminal do Windows**
 feito com WinUSB / IOCTLs de hub · C++17 · sem dependências externas
 
+[![build](https://img.shields.io/github/actions/workflow/status/grimh3xx/usbscope/build.yml?branch=main&style=flat-square&labelColor=111826&label=build)](https://github.com/grimh3xx/usbscope/actions)
+[![release](https://img.shields.io/github/v/release/grimh3xx/usbscope?style=flat-square&labelColor=111826&color=3B82F6)](https://github.com/grimh3xx/usbscope/releases/latest)
+[![license](https://img.shields.io/github/license/grimh3xx/usbscope?style=flat-square&labelColor=111826&color=22D3EE)](LICENSE)
+![platform](https://img.shields.io/badge/platform-Windows-3B82F6?style=flat-square&labelColor=111826)
+![C++](https://img.shields.io/badge/C%2B%2B-17-22D3EE?style=flat-square&labelColor=111826)
+
 `CentralTech Solutions` · [centraltechpc.com](https://centraltechpc.com) · [github.com/grimh3xx](https://github.com/grimh3xx)
 
 </div>
