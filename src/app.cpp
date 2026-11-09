@@ -1,4 +1,4 @@
-// usbscope — inspetor de USB interativo pro terminal. (c) CentralTech Solutions.
+// usbscope — inspetor de USB interativo pro terminal. (c) grimh3xx.
 #include <algorithm>
 #include <string>
 #include <vector>
@@ -27,7 +27,7 @@ public:
             term::write("Este programa precisa do Windows Terminal ou de um console com suporte a VT.\n");
             return 1;
         }
-        term::setTitle("CentralTech · usbscope");
+        term::setTitle("grimh3xx · usbscope");
         if (term::isWindowsTerminal()) txt::setHyperlinks(true);
         refresh();
         loop();
@@ -393,7 +393,7 @@ private:
     }
 
     void printExitSummary() {
-        term::write(txt::BOLD + txt::fg(kWhite) + "Central" + txt::fg(kCyan) + "Tech" + txt::RESET +
+        term::write(txt::BOLD + txt::fg(kWhite) + "grim" + txt::fg(kCyan) + "h3xx" + txt::RESET +
                     txt::fg(kDim) + " · usbscope — até a próxima.\n" + txt::RESET);
     }
 };

@@ -11,7 +11,7 @@ feito com WinUSB / IOCTLs de hub · C++17 · sem dependências externas
 ![platform](https://img.shields.io/badge/platform-Windows-3B82F6?style=flat-square&labelColor=111826)
 ![C++](https://img.shields.io/badge/C%2B%2B-17-22D3EE?style=flat-square&labelColor=111826)
 
-`CentralTech Solutions` · [centraltechpc.com](https://centraltechpc.com) · [github.com/grimh3xx](https://github.com/grimh3xx)
+`grimh3xx` · [github.com/grimh3xx](https://github.com/grimh3xx) · [github.com/grimh3xx](https://github.com/grimh3xx)
 
 </div>
 
@@ -20,7 +20,7 @@ feito com WinUSB / IOCTLs de hub · C++17 · sem dependências externas
 
 ---
 
-Lista todos os dispositivos USB conectados, lê os **descritores de cada um direto do driver do hub** (mesmo os que têm driver próprio, como teclados e pendrives) e mostra tudo numa interface TUI navegável — com a logo da CentralTech em pixel art no topo, igual ao `samcli`.
+Lista todos os dispositivos USB conectados, lê os **descritores de cada um direto do driver do hub** (mesmo os que têm driver próprio, como teclados e pendrives) e mostra tudo numa interface TUI navegável — com a logo da grimh3xx em pixel art no topo, igual ao `samcli`.
 
 ## O que ele faz
 
@@ -70,7 +70,7 @@ Para nomes de fabricante/produto mais completos, coloque o arquivo [`usb.ids`](h
 ```
 src/
   app.cpp          loop da TUI, lista e telas de detalhe
-  banner.*         logo CentralTech em pixel art (meio-blocos + cor 24-bit)
+  banner.*         logo grimh3xx em pixel art (meio-blocos + cor 24-bit)
   term.hpp
   term_win.cpp     console do Windows: VT, UTF-8, teclas, tela alternativa
   usbenum.hpp
@@ -93,5 +93,5 @@ Ferramenta de **inspeção e diagnóstico**. As observações de segurança são
 ---
 
 <div align="center">
-<sub>© CentralTech Solutions — <a href="https://centraltechpc.com">centraltechpc.com</a></sub>
+<sub>© grimh3xx — <a href="https://github.com/grimh3xx">github.com/grimh3xx</a></sub>
 </div>

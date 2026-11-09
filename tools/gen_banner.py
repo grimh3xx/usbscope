@@ -109,7 +109,7 @@ def generate(src, dst):
         f.write(f"static constexpr int kLogoW = {w};\n")
         f.write(f"static constexpr int kLogoH = {h};\n")
         f.write(f"static constexpr int kIconEnd = {split if split is not None else h};      // linhas [0, kIconEnd) = ícone\n")
-        f.write(f"static constexpr int kWordStart = {word_start if word_start is not None else 0};  // linhas [kWordStart, kLogoH) = 'CentralTech'\n")
+        f.write(f"static constexpr int kWordStart = {word_start if word_start is not None else 0};  // linhas [kWordStart, kLogoH) = 'grimh3xx'\n")
         f.write(f"static constexpr int kSolutionsCol = {solutions_col};\n\n")
         f.write(f'static const char kPaletteChars[] = "{CHARS[:len(palette)]}";\n')
         f.write("static const unsigned int kPalette[] = {\n")

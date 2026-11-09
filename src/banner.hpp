@@ -1,4 +1,4 @@
-// Logo CentralTech em pixel art (meio-blocos ▀▄ + cor 24-bit).
+// Logo grimh3xx em pixel art (meio-blocos ▀▄ + cor 24-bit).
 #pragma once
 #include <string>
 #include <vector>
@@ -16,7 +16,7 @@ std::vector<std::string> build(int termWidth, Tier tier);
 Tier bestTier(int termWidth, int maxRows);
 int rowsFor(Tier tier);
 
-// Barra de uma linha pro topo das telas internas: "▌CentralTech  USB Inspector › Seção".
+// Barra de uma linha pro topo das telas internas: "▌grimh3xx  USB Inspector › Seção".
 std::vector<std::string> topBar(int termWidth, const std::string& section);
 
 }  // namespace banner

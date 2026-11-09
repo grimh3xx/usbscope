@@ -4,7 +4,7 @@
 static constexpr int kLogoW = 85;
 static constexpr int kLogoH = 42;
 static constexpr int kIconEnd = 30;      // linhas [0, kIconEnd) = ícone
-static constexpr int kWordStart = 32;  // linhas [kWordStart, kLogoH) = 'CentralTech'
+static constexpr int kWordStart = 32;  // linhas [kWordStart, kLogoH) = 'grimh3xx'
 static constexpr int kSolutionsCol = 18;
 
 static const char kPaletteChars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,-./:;<=>@[]";

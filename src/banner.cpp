@@ -128,7 +128,7 @@ std::vector<std::string> build(int termWidth, Tier tier) {
     using namespace theme;
     std::vector<std::string> out;
     if (tier == Tier::Text) {
-        std::string brand = txt::BOLD + txt::fg(kWhite) + "Central" + txt::fg(kCyan) + "Tech" + txt::RESET +
+        std::string brand = txt::BOLD + txt::fg(kWhite) + "grim" + txt::fg(kCyan) + "h3xx" + txt::RESET +
                             txt::fg(kAccent) + "  SOLUTIONS" + txt::RESET;
         std::string sub = txt::fg(kText) + kAppTitle + txt::fg(kDim) + "  ·  " + kVersion + "  ·  " + kSite +
                           txt::RESET;
@@ -148,7 +148,7 @@ std::vector<std::string> build(int termWidth, Tier tier) {
 
 std::vector<std::string> topBar(int termWidth, const std::string& section) {
     using namespace theme;
-    std::string left = txt::fg(kBlue) + "▌" + txt::BOLD + txt::fg(kWhite) + "Central" + txt::fg(kCyan) + "Tech" +
+    std::string left = txt::fg(kBlue) + "▌" + txt::BOLD + txt::fg(kWhite) + "grim" + txt::fg(kCyan) + "h3xx" +
                        txt::RESET + txt::fg(kDim) + "  " + kAppTitle + txt::RESET;
     if (!section.empty()) left += txt::fg(kDim) + "  ›  " + txt::RESET + txt::BOLD + section + txt::RESET;
     std::string right = txt::fg(kDim) + kVersion + txt::RESET;
