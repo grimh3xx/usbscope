@@ -73,16 +73,6 @@ std::vector<std::string> headerLines(int leftPad) {
     std::vector<std::string> out;
     const std::string pad(size_t(leftPad), ' ');
 
-    // "S O L U T I O N S" espaçado embaixo do wordmark, como no samcli
-    std::string sol(size_t(kLogoW), ' ');
-    const char* word = "SOLUTIONS";
-    for (int i = 0; word[i]; ++i) {
-        size_t col = size_t(kSolutionsCol + i * 6);
-        if (col < sol.size()) sol[col] = word[i];
-    }
-    while (!sol.empty() && sol.back() == ' ') sol.pop_back();
-    out.push_back(pad + txt::fg(kAccent) + sol + txt::RESET);
-
     const std::string rule = txt::gradient(txt::repeat("─", size_t(kLogoW)), kBlue, kCyan);
     out.push_back(pad + rule);
 
@@ -101,7 +91,7 @@ std::vector<std::string> headerLines(int leftPad) {
     return out;
 }
 
-constexpr int kHeaderRows = 5;
+constexpr int kHeaderRows = 4;
 }  // namespace
 
 namespace banner {
@@ -128,8 +118,7 @@ std::vector<std::string> build(int termWidth, Tier tier) {
     using namespace theme;
     std::vector<std::string> out;
     if (tier == Tier::Text) {
-        std::string brand = txt::BOLD + txt::fg(kWhite) + "grim" + txt::fg(kCyan) + "h3xx" + txt::RESET +
-                            txt::fg(kAccent) + "  SOLUTIONS" + txt::RESET;
+        std::string brand = txt::BOLD + txt::fg(kWhite) + "grim" + txt::fg(kCyan) + "h3xx" + txt::RESET;
         std::string sub = txt::fg(kText) + kAppTitle + txt::fg(kDim) + "  ·  " + kVersion + "  ·  " + kSite +
                           txt::RESET;
         out.push_back(txt::center(brand, size_t(termWidth)));
