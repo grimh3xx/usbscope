@@ -36,7 +36,7 @@ def from_screenshot(src, dst):
     W, X0, H, Y0 = 9.0, 143.5, 9.5, 45.0
     rows = []
     y = Y0
-    while y + H <= 450:          # para antes da linha "S O L U T I O N S"
+    while y + H <= 450:          # para antes do rodapé
         row = []
         x = X0
         while x + W <= 935:
@@ -100,7 +100,7 @@ def generate(src, dst):
                 word_start = y
                 break
 
-    # posição das letras de "SOLUTIONS" (colunas do grid original, menos o recorte)
+    # posição do rodapé (colunas do grid original, menos o recorte)
     solutions_col = 19 - x0
 
     with open(dst, "w", encoding="utf-8") as f:

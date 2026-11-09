@@ -5,7 +5,7 @@
 namespace theme {
 constexpr uint32_t kBlue = 0x0050FF;    // azul profundo do ícone
 constexpr uint32_t kCyan = 0x00C8FF;    // ciano do "h3xx"
-constexpr uint32_t kAccent = 0x0096F0;  // azul do "S O L U T I O N S"
+constexpr uint32_t kAccent = 0x0096F0;  // azul de acento
 constexpr uint32_t kWhite = 0xEBEEF5;
 constexpr uint32_t kText = 0xC8CCD6;
 constexpr uint32_t kDim = 0x6E7382;
