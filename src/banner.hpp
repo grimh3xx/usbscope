@@ -9,7 +9,7 @@ enum class Tier { Full, Wordmark, Text };
 
 int logoWidth();
 
-// Logo + cabeçalho (S O L U T I O N S, título, links), centralizados em termWidth.
+// Logo + cabeçalho (título, links), centralizados em termWidth.
 std::vector<std::string> build(int termWidth, Tier tier);
 
 // Escolhe o maior tier que cabe em maxRows linhas e termWidth colunas.
