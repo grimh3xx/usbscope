@@ -4,63 +4,25 @@
 #include "theme.hpp"
 
 namespace {
-#include "banner_data.inc"
 
-int paletteIndex(char c) {
-    if (c == ' ') return -1;
-    for (int i = 0; kPaletteChars[i]; ++i)
-        if (kPaletteChars[i] == c) return i;
-    return -1;
-}
+// Logo "grimh3xx" em ANSI Shadow (figlet). "grim" branco, "h3xx" ciano.
+constexpr int kBannerW = 63;
+constexpr int kShadowRows = 6;
 
-// Cor do bloco (x, y) ou -1 se vazio / fora da área.
-long long pixel(int x, int y) {
-    if (y < 0 || y >= kLogoH || x < 0) return -1;
-    const char* row = kLogo[y];
-    for (int i = 0; i < x; ++i)
-        if (!row[i]) return -1;
-    int idx = paletteIndex(row[x]);
-    return idx < 0 ? -1 : (long long)kPalette[idx];
-}
-
-// Converte as linhas [y0, y1) em linhas de terminal (2 linhas de pixel por linha de texto).
-std::vector<std::string> renderRows(int y0, int y1, int leftPad) {
+std::vector<std::string> shadowLogo(int leftPad) {
+    using namespace theme;
+    static const char* art[kShadowRows][2] = {
+        {u8" ██████╗ ██████╗ ██╗███╗   ███╗", u8"██╗  ██╗██████╗ ██╗  ██╗██╗  ██╗"},
+        {u8"██╔════╝ ██╔══██╗██║████╗ ████║", u8"██║  ██║╚════██╗╚██╗██╔╝╚██╗██╔╝"},
+        {u8"██║  ███╗██████╔╝██║██╔████╔██║", u8"███████║ █████╔╝ ╚███╔╝  ╚███╔╝ "},
+        {u8"██║   ██║██╔══██╗██║██║╚██╔╝██║", u8"██╔══██║ ╚═══██╗ ██╔██╗  ██╔██╗ "},
+        {u8"╚██████╔╝██║  ██║██║██║ ╚═╝ ██║", u8"██║  ██║██████╔╝██╔╝ ██╗██╔╝ ██╗"},
+        {u8" ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝     ╚═╝", u8"╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝"},
+    };
     std::vector<std::string> out;
-    for (int y = y0; y < y1; y += 2) {
-        std::string line(size_t(leftPad), ' ');
-        long long curFg = -2, curBg = -2;  // -2 = estado desconhecido/padrão
-        std::string pendingSpaces;
-        for (int x = 0; x < kLogoW; ++x) {
-            long long t = pixel(x, y);
-            long long b = (y + 1 < y1) ? pixel(x, y + 1) : -1;
-            if (t < 0 && b < 0) {
-                pendingSpaces += ' ';
-                continue;
-            }
-            // espaços pendentes precisam do fundo padrão
-            if (!pendingSpaces.empty()) {
-                if (curBg >= 0) { line += "\x1b[49m"; curBg = -2; }
-                line += pendingSpaces;
-                pendingSpaces.clear();
-            }
-            const char* glyph;
-            long long wantFg, wantBg = -1;
-            if (t >= 0 && b >= 0) {
-                if (t == b) { glyph = "█"; wantFg = t; }
-                else { glyph = "▀"; wantFg = t; wantBg = b; }
-            } else if (t >= 0) {
-                glyph = "▀"; wantFg = t;
-            } else {
-                glyph = "▄"; wantFg = b;
-            }
-            if (wantFg != curFg) { line += txt::fg(uint32_t(wantFg)); curFg = wantFg; }
-            if (wantBg >= 0 && wantBg != curBg) { line += txt::bg(uint32_t(wantBg)); curBg = wantBg; }
-            if (wantBg < 0 && curBg >= 0) { line += "\x1b[49m"; curBg = -2; }
-            line += glyph;
-        }
-        line += txt::RESET;
-        out.push_back(line);
-    }
+    const std::string pad(size_t(leftPad), ' ');
+    for (int i = 0; i < kShadowRows; ++i)
+        out.push_back(pad + txt::BOLD + txt::fg(kWhite) + art[i][0] + txt::fg(kCyan) + art[i][1] + txt::RESET);
     return out;
 }
 
@@ -73,12 +35,12 @@ std::vector<std::string> headerLines(int leftPad) {
     std::vector<std::string> out;
     const std::string pad(size_t(leftPad), ' ');
 
-    const std::string rule = txt::gradient(txt::repeat("─", size_t(kLogoW)), kBlue, kCyan);
+    const std::string rule = txt::gradient(txt::repeat("─", size_t(kBannerW)), kBlue, kCyan);
     out.push_back(pad + rule);
 
     std::string title = txt::BOLD + txt::fg(kWhite) + std::string(kAppTitle) + txt::RESET +
                         txt::fg(kDim) + "  ·  " + kVersion + txt::RESET;
-    out.push_back(pad + txt::center(title, size_t(kLogoW)));
+    out.push_back(pad + txt::center(title, size_t(kBannerW)));
 
     auto lnk = [](const std::string& host, const std::string& url) {
         return txt::fg(kCyan) + "► " + txt::fg(kText) + txt::UNDERLINE +
@@ -86,7 +48,7 @@ std::vector<std::string> headerLines(int leftPad) {
     };
     std::string links = lnk(kSite, std::string("https://") + kSite) + "        " +
                         lnk(kGithub, std::string("https://") + kGithub);
-    out.push_back(pad + txt::center(links, size_t(kLogoW)));
+    out.push_back(pad + txt::center(links, size_t(kBannerW)));
     out.push_back(pad + rule);
     return out;
 }
@@ -96,19 +58,19 @@ constexpr int kHeaderRows = 4;
 
 namespace banner {
 
-int logoWidth() { return kLogoW; }
+int logoWidth() { return kBannerW; }
 
 int rowsFor(Tier tier) {
     switch (tier) {
-        case Tier::Full: return (kLogoH + 1) / 2 + kHeaderRows;
-        case Tier::Wordmark: return (kLogoH - kWordStart + 1) / 2 + kHeaderRows;
+        case Tier::Full: return kShadowRows + kHeaderRows;
+        case Tier::Wordmark: return kShadowRows + kHeaderRows;
         case Tier::Text: return 3;
     }
     return 3;
 }
 
 Tier bestTier(int termWidth, int maxRows) {
-    if (termWidth < kLogoW) return Tier::Text;
+    if (termWidth < kBannerW) return Tier::Text;
     if (maxRows >= rowsFor(Tier::Full)) return Tier::Full;
     if (maxRows >= rowsFor(Tier::Wordmark)) return Tier::Wordmark;
     return Tier::Text;
@@ -127,8 +89,9 @@ std::vector<std::string> build(int termWidth, Tier tier) {
         out.push_back("  " + txt::gradient(txt::repeat("─", size_t(w)), kBlue, kCyan));
         return out;
     }
-    int pad = padFor(termWidth, kLogoW);
-    auto logo = renderRows(tier == Tier::Full ? 0 : kWordStart, kLogoH, pad);
+    int pad = padFor(termWidth, kBannerW);
+    auto logo = shadowLogo(pad);
+    (void)tier;
     out.insert(out.end(), logo.begin(), logo.end());
     auto hdr = headerLines(pad);
     out.insert(out.end(), hdr.begin(), hdr.end());
