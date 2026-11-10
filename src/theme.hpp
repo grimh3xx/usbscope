@@ -17,7 +17,7 @@ constexpr uint32_t kSelBg = 0x0B2A55;   // fundo da linha selecionada
 
 constexpr const char* kAppName = "usbscope";
 constexpr const char* kAppTitle = "USB Inspector";
-constexpr const char* kVersion = "v1.0.0";
+constexpr const char* kVersion = "v1.0.1";
 constexpr const char* kSite = "github.com/grimh3xx";
 constexpr const char* kGithub = "github.com/grimh3xx";
 }  // namespace theme
